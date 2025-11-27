@@ -1,0 +1,114 @@
+C51 COMPILER V9.54   DIGITAL_LED                                                           11/27/2025 15:40:31 PAGE 1   
+
+
+C51 COMPILER V9.54, COMPILATION OF MODULE DIGITAL_LED
+OBJECT MODULE PLACED IN .\Objects\Digital_LED.obj
+COMPILER INVOKED BY: E:\Keil5 C51\Keil5 C51\C51\BIN\C51.EXE Digital_LED.c OPTIMIZE(8,SPEED) BROWSE DEBUG OBJECTEXTEND PR
+                    -INT(.\Listings\Digital_LED.lst) OBJECT(.\Objects\Digital_LED.obj)
+
+line level    source
+
+   1          #include "STC15.h"
+   2          
+   3          
+   4          //全局变量存储四个数码管的状态，主函数里改变全局变量，扫描函数里读取全�
+             -�变量刷新到数码管
+   5          unsigned char code_888led[]={10,10,10,10};
+   6          
+   7          
+   8          /**
+   9                  * @brief                传入位置和数字，在位置上显示数字//0~9每个码代表一个数字,10代表空白
+  10                  * @param                要显示的位置，1~8
+  11                  * @param                要显示的数字0~9，10为空白
+  12                  * @retval               无
+  13                  */
+  14          unsigned char code leddata[]={
+  15                  0xc0,//0
+  16                  0xf9,//1
+  17                  0xa4,//2
+  18                  0xb0,//3
+  19                  0x99,//4
+  20                  0x92,//5
+  21                  0x82,//6
+  22                  0xf8,//7
+  23                  0x80,//8
+  24                  0x90,//9
+  25                  0xff,//空白
+  26                  0x40};
+  27          
+  28          /**
+  29                  * @brief                初始化函数，设置P3为推挽输出，并且保证初始化后数码管不亮
+  30                  * @param                无
+  31                  * @retval               无
+  32          */
+  33          void led888_Init(void){
+  34   1              P3M1&= 0x0F;   // 将P3M1寄存器全部清零
+  35   1          P3M0|= 0xF0;   // 将P3M0寄存器全部置一
+  36   1              P3&=0x0f;
+  37   1              P2=0xFF;
+  38   1      }
+  39                  
+  40          void Nixie(unsigned char Location,Number){
+  41   1              P3&=0x0f;
+  42   1              
+  43   1              switch(Location)
+  44   1              {
+  45   2                      case 1: P34=1;break;    //选择数码管1
+  46   2                      case 2: P35=1;break;    //选择数码管2
+  47   2                      case 3: P36=1;break;    //选择数码管3
+  48   2                      case 4: P37=1;break;    //选择数码管4
+  49   2              }
+  50   1              P2=leddata[Number];
+  51   1      }
+  52          
+  53          
+C51 COMPILER V9.54   DIGITAL_LED                                                           11/27/2025 15:40:31 PAGE 2   
+
+  54          /**
+  55           * @brief  数码管扫描显示函数
+  56           * @param  无
+  57           * @retval 无
+  58           * @note   定时器每2ms调用一次，实现多位数码管的动态显示
+  59           *         自动跳过值为10的位置（不显示），避免显示亮度不均
+  60           *         显示密度自适应：数字多时整体偏暗，数字少时整体偏亮，但亮度均匀
+  61           */
+  62          void Scan_888led(void){
+  63   1              static unsigned char number=0,i=0;//number为自加值，i为超时判定
+  64   1              P2=0xFF;
+  65   1              // 跳过不显示的位置（值为10），最多查找4次避免死循环
+  66   1              while(code_888led[number]==10 && i<4){
+  67   2                      number = (number + 1) % 4;
+  68   2                      i++;
+  69   2              }i=0;//把i归0
+  70   1              
+  71   1              
+  72   1              Nixie((number+1),code_888led[number]);//在对应位置显示对应数据
+  73   1              number = (number + 1) % 4; //更新到下一个位置，让number循环在0~3
+  74   1      }
+  75          
+  76          
+  77          /**
+  78                  * @brief                改变某个位置的数字
+  79                  * @param                要改变的位置
+  80                  * @param                要改成的数字
+  81                  * @retval               无
+  82                  */
+  83          void Set_888led(unsigned char Location,Number){
+  84   1              code_888led[(Location-1)]=Number;
+  85   1      }
+  86          
+  87          
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =    122    ----
+   CONSTANT SIZE    =     12    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =      6    ----
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)
