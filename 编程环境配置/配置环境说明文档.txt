@@ -1,0 +1,8 @@
+打开AiCube-ISP-v6.96G.exe
+在Keil仿真设置里
+找到《添加型号和头文件到Kei1中添加仿真器驱动到kei1中》按钮
+点击按钮，设置keil的安装路径，比如E://keil/keil
+然后再keil5里点击new project新建工程
+在弹出的选型里下拉框找到STC MCU Description
+在下面的选型里找到Stc15W408as型号
+新建工程和配置环境完成

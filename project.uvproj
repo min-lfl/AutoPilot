@@ -177,7 +177,7 @@
           </Flash1>
           <bUseTDR>0</bUseTDR>
           <Flash2></Flash2>
-          <Flash3></Flash3>
+          <Flash3>"" ()</Flash3>
           <Flash4></Flash4>
           <pFcarmOut></pFcarmOut>
           <pFcarmGrp></pFcarmGrp>
@@ -312,7 +312,7 @@
               <MiscControls></MiscControls>
               <Define></Define>
               <Undefine></Undefine>
-              <IncludePath></IncludePath>
+              <IncludePath>.\Hardware;.\System</IncludePath>
             </VariousControls>
           </C51>
           <Ax51>
@@ -362,52 +362,62 @@
       </TargetOption>
       <Groups>
         <Group>
-          <GroupName>Source Group 1</GroupName>
+          <GroupName>Hardware</GroupName>
+          <Files>
+            <File>
+              <FileName>Digital_LED.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\Hardware\Digital_LED.c</FilePath>
+            </File>
+            <File>
+              <FileName>Digital_LED.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\Hardware\Digital_LED.h</FilePath>
+            </File>
+            <File>
+              <FileName>Key.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\Hardware\Key.c</FilePath>
+            </File>
+            <File>
+              <FileName>Key.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\Hardware\Key.h</FilePath>
+            </File>
+          </Files>
+        </Group>
+        <Group>
+          <GroupName>System</GroupName>
+          <Files>
+            <File>
+              <FileName>delay.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\System\delay.c</FilePath>
+            </File>
+            <File>
+              <FileName>delay.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\System\delay.h</FilePath>
+            </File>
+            <File>
+              <FileName>Timer0.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\System\Timer0.c</FilePath>
+            </File>
+            <File>
+              <FileName>Timer0.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\System\Timer0.h</FilePath>
+            </File>
+          </Files>
+        </Group>
+        <Group>
+          <GroupName>main</GroupName>
           <Files>
             <File>
               <FileName>main.c</FileName>
               <FileType>1</FileType>
               <FilePath>.\main.c</FilePath>
-            </File>
-            <File>
-              <FileName>Digital_LED.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\Digital_LED.c</FilePath>
-            </File>
-            <File>
-              <FileName>Digital_LED.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\Digital_LED.h</FilePath>
-            </File>
-            <File>
-              <FileName>Timer0.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\Timer0.c</FilePath>
-            </File>
-            <File>
-              <FileName>Timer0.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\Timer0.h</FilePath>
-            </File>
-            <File>
-              <FileName>delay.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\delay.c</FilePath>
-            </File>
-            <File>
-              <FileName>delay.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\delay.h</FilePath>
-            </File>
-            <File>
-              <FileName>Key.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\Key.c</FilePath>
-            </File>
-            <File>
-              <FileName>Key.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\Key.h</FilePath>
             </File>
           </Files>
         </Group>

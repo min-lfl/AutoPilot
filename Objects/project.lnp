@@ -1,7 +1,7 @@
-".\Objects\main.obj",
 ".\Objects\Digital_LED.obj",
-".\Objects\Timer0.obj",
+".\Objects\Key.obj",
 ".\Objects\delay.obj",
-".\Objects\Key.obj" 
+".\Objects\Timer0.obj",
+".\Objects\main.obj" 
 TO ".\Objects\project" 
 PRINT(".\Listings\project.m51") RAMSIZE(256) 
