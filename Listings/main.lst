@@ -1,4 +1,4 @@
-C51 COMPILER V9.54   MAIN                                                                  11/27/2025 15:40:31 PAGE 1   
+C51 COMPILER V9.54   MAIN                                                                  11/27/2025 15:56:45 PAGE 1   
 
 
 C51 COMPILER V9.54, COMPILATION OF MODULE MAIN
@@ -46,12 +46,12 @@ line level    source
   36   1              TH0 = 0xFC;             //设置定时初值
   37   1              T0Count++;
   38   1              T0Count1++;
-  39   1              if(T0Count>=2)  //2毫秒
+  39   1              if(T0Count>=2)  //2毫秒,扫描数码管
   40   1              {
   41   2                      T0Count=0;
   42   2                      Scan_888led();
   43   2              }
-  44   1              if(T0Count1>=20)  //20毫秒
+  44   1              if(T0Count1>=20)  //20毫秒,扫描按键
   45   1              {
   46   2                      T0Count1=0;
   47   2                      Scan_key();
@@ -62,7 +62,7 @@ line level    source
 
 MODULE INFORMATION:   STATIC OVERLAYABLE
    CODE SIZE        =    174    ----
-C51 COMPILER V9.54   MAIN                                                                  11/27/2025 15:40:31 PAGE 2   
+C51 COMPILER V9.54   MAIN                                                                  11/27/2025 15:56:45 PAGE 2   
 
    CONSTANT SIZE    =   ----    ----
    XDATA SIZE       =   ----    ----

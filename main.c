@@ -36,12 +36,12 @@ void Timer0_Routine() interrupt 1
 	TH0 = 0xFC;		//设置定时初值
 	T0Count++;
 	T0Count1++;
-	if(T0Count>=2)  //2毫秒
+	if(T0Count>=2)  //2毫秒,扫描数码管
 	{
 		T0Count=0;
 		Scan_888led();
 	}
-	if(T0Count1>=20)  //20毫秒
+	if(T0Count1>=20)  //20毫秒,扫描按键
 	{
 		T0Count1=0;
 		Scan_key();
